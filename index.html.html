@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>شجرة عائلة آل عوض</title>
+<style>
+:root{--ink:#3c2a1d;--muted:#826b57;--paper:#fbf7ef;--panel:#fffdf8;--line:#d9c7a9;--gold:#b48a4a;--deep:#68472d;--leaf:#728568;--danger:#a44b3f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#f3ead9,#fbf7ef 58%);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+header{padding:28px 18px 20px;text-align:center;background:linear-gradient(135deg,#493321,#765333);color:#fff7e8;border-bottom:5px solid #c4a36b}
+header .mark{font-size:34px}header h1{margin:8px 0 5px;font-size:27px}header p{margin:0;color:#eadbc2;font-size:13px}
+nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:14px;background:#f1e7d5;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+button{border:0;border-radius:12px;padding:11px 16px;background:var(--deep);color:white;font-weight:bold;cursor:pointer;font-size:14px}
+button.secondary{background:#e9deca;color:var(--ink);border:1px solid var(--line)}button.danger{background:var(--danger)}button:disabled{opacity:.5;cursor:not-allowed}
+main{max-width:1100px;margin:22px auto;padding:0 14px 50px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;margin:14px 0;box-shadow:0 8px 24px #4b32100c}
+#account{max-width:620px;margin:38px auto 24px;text-align:center;padding:28px}
+#account .grid{text-align:right}
+#account button{min-width:150px}
+#account .notice{text-align:right}
+#account hr{margin:24px 0!important}
+main{min-height:65vh}
+h2{font-size:20px;margin:0 0 14px;color:var(--deep)}h3{margin:0 0 8px}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fffefa;font:inherit;color:var(--ink);margin:5px 0 12px}
+label{font-size:13px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.notice{padding:12px;border-radius:12px;background:#f4eddf;color:#62482f;font-size:13px;line-height:1.8}
+.hidden{display:none!important}.muted{color:var(--muted);font-size:13px}.actions{display:flex;gap:7px;flex-wrap:wrap}.tree{padding:14px 4px;text-align:center;overflow-x:auto}
+.root{display:inline-block;padding:14px 30px;border-radius:50px;background:linear-gradient(135deg,#61442c,#87643f);color:#fff;font-weight:bold;border:3px double #d9bd87;min-width:180px}
+.trunk{height:25px;width:3px;background:#b79560;margin:auto}.branches{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:12px;position:relative}
+.branch{background:#f7f1e6;border:1px solid #d8c5a5;border-radius:17px;padding:12px;min-width:145px;position:relative}
+.branch:before{content:"";position:absolute;top:-13px;right:50%;height:13px;border-right:2px solid #b79560}
+.branch-title{background:#e8dcc5;border-radius:12px;padding:10px;font-weight:bold;color:#563c27}
+.person{margin:8px 0;padding:9px;background:#fffdf8;border:1px solid #e5d8c2;border-radius:10px;font-size:13px}
+.person small{display:block;color:var(--muted);margin-top:4px}
+.kids{border-right:2px solid #b9a17a;margin:7px 12px 0 0;padding-right:9px;text-align:right}
+.chatbox{height:300px;overflow:auto;background:#f8f3e9;border:1px solid var(--line);border-radius:14px;padding:12px}
+.msg{max-width:85%;padding:9px 12px;border-radius:13px;background:#fff;border:1px solid #e5d8c2;margin:7px 0;font-size:13px}
+.msg.mine{margin-right:auto;background:#e8efdf;border-color:#cad8bd}.msg small{display:block;color:var(--muted);font-size:10px;margin-top:5px}
+.row{display:flex;gap:8px;align-items:center}.row input{margin:8px 0}.row button{white-space:nowrap}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:700px){.branches{grid-template-columns:repeat(2,minmax(140px,1fr))}header h1{font-size:23px}nav button{padding:9px 12px;font-size:12px}}
+@media(max-width:390px){.branches{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><div class="mark">🌳</div><h1>شجرة عائلة آل عوض</h1><p>الأصل يجمعنا، والتواصل يقوّي صلتنا</p></header>
+<nav id="siteNav" class="hidden">
+<button onclick="show('tree')">🌳 شجرة العائلة</button>
+<button onclick="show('chat')">💬 مجلس العائلة</button>
+<button onclick="show('gathering')">📍 نقطة التجمع</button>
+<button onclick="show('account')">👤 حسابي</button>
+<button onclick="show('admin')" id="adminNav" class="hidden">⚙️ الإدارة</button>
+<button onclick="logout()" id="logoutBtn" class="secondary hidden">تسجيل خروج</button>
+</nav>
+<main>
+<section id="tree" class="panel hidden">
+<h2>🌿 شجرة العائلة</h2><p class="muted">اختر أي فرع لعرض الأبناء الذين يسجلهم أصحاب حساباتهم بعد اعتمادها.</p>
+<div class="tree"><div class="root">عوض</div><div class="trunk"></div><div class="branches" id="branches"></div></div>
+</section>
+<section id="account" class="panel">
+<div id="auth">
+<h2>الدخول إلى حسابك</h2><div class="grid">
+<div><label>اسم المستخدم</label><input id="loginUser" autocomplete="username" placeholder="اسم المستخدم"></div>
+<div><label>كلمة المرور</label><input id="loginPass" type="password" autocomplete="current-password" placeholder="كلمة المرور"></div></div>
+<button onclick="login()">دخول</button>
+<hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
+<h2>طلب إنشاء حساب</h2><div class="grid">
+<div><label>الاسم الكامل</label><input id="regName" placeholder="اسمك الكامل"></div>
+<div><label>اسم المستخدم</label><input id="regUser" placeholder="اسم مستخدم باللغة الإنجليزية"></div>
+<div><label>كلمة المرور</label><input id="regPass" type="password" placeholder="اختر كلمة مرور"></div>
+<div><label>والدك / صاحب الحساب الذي تتبعه</label><select id="regParent"></select></div>
+<div><label>الفرع</label><select id="regBranch"></select></div>
+</div><button onclick="register()">إرسال طلب الحساب</button>
+<p class="notice">لن تتمكن من الدخول إلا بعد موافقة مدير الموقع. بعد الموافقة تستطيع تسجيل أبنائك، وكل ابن يمكنه لاحقاً إنشاء حسابه الخاص وتسجيل أبنائه.</p>
+</div>
+<div id="profile" class="hidden"><h2>مرحباً <span id="who"></span></h2><p id="statusText" class="muted"></p>
+<div class="grid"><div><label>اسم الابن</label><input id="childName" placeholder="اسم الابن أو الابنة"></div><div><label>ملاحظة (اختياري)</label><input id="childNote" placeholder="مثلاً: الابن الأكبر"></div></div>
+<button onclick="addChild()">＋ إضافة ابن / ابنة</button>
+<div id="myChildren" style="margin-top:15px"></div>
+</div></section>
+<section id="gathering" class="panel hidden"><h2>📍 نقطة التجمع</h2>
+<p class="muted">يعرض المدير موقع أو مقترح التجمع، ويستطيع كل عضو معتمد التصويت بالموافقة أو عدم الموافقة.</p>
+<div id="gatheringLocked" class="notice">سجّل الدخول بحساب معتمد للاطلاع على نقطة التجمع والتصويت.</div>
+<div id="gatheringArea" class="hidden"><div id="gatheringDetails" class="notice">لم يحدد المدير نقطة تجمع حتى الآن.</div>
+<div class="actions" style="margin-top:12px"><button onclick="voteGathering('yes')">👍 موافق</button><button class="secondary" onclick="voteGathering('no')">👎 غير موافق</button></div>
+<p id="myVote" class="muted"></p><div id="voteResults" style="margin-top:12px"></div></div></section>
+<section id="chat" class="panel hidden"><h2>💬 مجلس العائلة</h2><p class="muted">مساحة للتواصل بين أفراد العائلة المسجلين.</p>
+<div id="chatLocked" class="notice">سجّل الدخول بحساب معتمد للمشاركة في الشات.</div>
+<div id="chatArea" class="hidden"><div class="chatbox" id="messages"></div><div class="row"><input id="chatInput" placeholder="اكتب رسالتك..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">إرسال</button></div></div>
+</section>
+<section id="admin" class="panel hidden"><h2>⚙️ إدارة الموقع</h2><div class="panel"><h3>📍 تحديد نقطة التجمع</h3><label>اسم / موقع نقطة التجمع</label><input id="gatherTitle" placeholder="مثلاً: استراحة العائلة"> <label>التفاصيل (العنوان أو رابط الموقع أو الموعد)</label><textarea id="gatherDesc" rows="3" placeholder="اكتب تفاصيل نقطة التجمع"></textarea><button onclick="saveGathering()">حفظ نقطة التجمع</button></div><div id="requests"></div><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><h3>إدارة الأعضاء</h3><div id="members"></div></section>
+
+</main><footer>آل عوض · صلة رحم ومحبة</footer>
+<script>
+const branches=['لافي','سلمان','يوسف','عيسى','بجاد','موسى','مروان','أحمد','مشاري','محمد','مصعب','مشعل'];
+const KEY='awad_tree_v3';
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||{users:[{id:'admin',name:'سلطان بن سلمان',username:'Sultan',password:'Sultan2026!',father:'سلمان',branch:'سلمان',role:'admin',approved:true,parentId:null}],children:[],messages:[],gathering:{title:'',description:'',votes:{}}};
+db.gathering=db.gathering||{title:'',description:'',votes:{}};db.gathering.votes=db.gathering.votes||{};
+let current=null;
+function save(){localStorage.setItem(KEY,JSON.stringify(db))}
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function init(){document.getElementById('regBranch').innerHTML=branches.map(b=>`<option>${b}</option>`).join('');fillParents();renderTree();save();show('account')}
+function fillParents(){let opts=branches.map(b=>`<option value="root:${safe(b)}">عوض — فرع ${safe(b)}</option>`).join('')+db.users.filter(u=>u.approved&&u.role!=='admin').map(u=>`<option value="${safe(u.id)}">${safe(u.name)}</option>`).join('');regParent.innerHTML=opts;regParent.onchange=()=>{let v=regParent.value;if(v.startsWith('root:'))regBranch.value=v.slice(5);else{let p=db.users.find(x=>x.id===v);if(p)regBranch.value=p.branch}}}
+function show(id){['tree','account','chat','admin','gathering'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id))}
+function login(){let u=db.users.find(x=>x.username.toLowerCase()===document.getElementById('loginUser').value.trim().toLowerCase()&&x.password===document.getElementById('loginPass').value);if(!u){alert('اسم المستخدم أو كلمة المرور غير صحيحة');return}if(!u.approved){alert('طلبك بانتظار موافقة المدير');return}current=u;refresh()}
+function register(){let name=regName.value.trim(),username=regUser.value.trim(),password=regPass.value,parentValue=regParent.value;if(!name||!username||!password||!parentValue){alert('أكمل جميع البيانات');return}if(db.users.some(x=>x.username.toLowerCase()===username.toLowerCase())){alert('اسم المستخدم مستخدم مسبقاً');return}let parentId=parentValue.startsWith('root:')?null:parentValue,parent=parentId?db.users.find(x=>x.id===parentId):null,branch=parent?parent.branch:parentValue.slice(5),father=parent?parent.name:'عوض';db.users.push({id:'u'+Date.now(),name,username,password,father,branch,parentId,role:'member',approved:false});save();alert('تم إرسال طلبك، انتظر موافقة المدير');regName.value=regUser.value=regPass.value='';fillParents()}
+function refresh(){document.getElementById('siteNav').classList.remove('hidden');show('tree');auth.classList.add('hidden');profile.classList.remove('hidden');who.textContent=current.name;statusText.textContent=current.role==='admin'?'مدير الموقع — لديك صلاحية إدارة جميع الفروع.':'يمكنك مشاهدة الشجرة وإضافة أبنائك فقط.';logoutBtn.classList.remove('hidden');adminNav.classList.toggle('hidden',current.role!=='admin');chatLocked.classList.add('hidden');chatArea.classList.remove('hidden');gatheringLocked.classList.add('hidden');gatheringArea.classList.remove('hidden');renderMine();renderChat();renderGathering();if(current.role==='admin')renderAdmin()}
+function logout(){current=null;document.getElementById('siteNav').classList.add('hidden');['tree','chat','admin','gathering'].forEach(x=>document.getElementById(x).classList.add('hidden'));gatheringLocked.classList.remove('hidden');gatheringArea.classList.add('hidden');auth.classList.remove('hidden');profile.classList.add('hidden');logoutBtn.classList.add('hidden');adminNav.classList.add('hidden');chatLocked.classList.remove('hidden');chatArea.classList.add('hidden');show('account')}
+function addChild(){let name=childName.value.trim();if(!name)return alert('اكتب اسم الابن');db.children.push({id:'c'+Date.now(),name,parentId:current.id,branch:current.branch,note:childNote.value.trim()});childName.value=childNote.value='';save();renderMine();renderTree();fillParents()}
+function renderMine(){let list=db.children.filter(c=>c.parentId===current.id);myChildren.innerHTML=list.length?list.map(c=>`<div class="person">${safe(c.name)} <small>${safe(c.note||'')}</small><button class="danger" onclick="removeChild('${c.id}')">حذف</button></div>`).join(''):'<p class="muted">لم تسجل أبناء حتى الآن.</p>'}
+function removeChild(id){if(!confirm('حذف هذا الاسم؟'))return;db.children=db.children.filter(c=>c.id!==id);save();renderMine();renderTree()}
+function renderTree(){branchesEl=document.getElementById('branches');function personHTML(u,depth=0){let kids=db.children.filter(c=>c.parentId===u.id),accounts=db.users.filter(x=>x.approved&&x.role!=='admin'&&x.parentId===u.id);let childNames=kids.filter(k=>!accounts.some(a=>a.name.trim()===k.name.trim())).map(k=>`<div>🌱 ${safe(k.name)}</div>`).join('');return `<div class="person">👤 ${safe(u.name)}${childNames||accounts.length?`<div class="kids">${childNames}${accounts.map(a=>personHTML(a,depth+1)).join('')}</div>`:''}</div>`}branchesEl.innerHTML=branches.map(b=>{let people=db.users.filter(u=>u.approved&&u.role!=='admin'&&u.branch===b&&(!u.parentId||!db.users.some(p=>p.id===u.parentId&&p.approved)));let html=people.map(u=>personHTML(u)).join('');return `<div class="branch"><div class="branch-title">🌿 ${b}</div>${html||'<div class="muted" style="padding:10px">بانتظار تسجيل أفراد الفرع</div>'}</div>`}).join('')}
+function renderAdmin(){
+if(gatherTitle)gatherTitle.value=db.gathering.title||'';if(gatherDesc)gatherDesc.value=db.gathering.description||'';
+requests.innerHTML='<h3>طلبات الانضمام</h3>';
+let pending=db.users.filter(u=>!u.approved);
+requests.innerHTML+=pending.length?pending.map(u=>`<div class="person"><b>${safe(u.name)}</b> — ${safe(u.branch)}<small>اسم المستخدم: ${safe(u.username)} · الأب: ${safe(u.father)}</small><div class="actions"><button onclick="approve('${u.id}')">موافقة</button><button class="danger" onclick="reject('${u.id}')">رفض</button></div></div>`).join(''):'<p class="muted">لا توجد طلبات معلقة.</p>';
+members.innerHTML='<h3>جميع الحسابات والفروع</h3>'+db.users.filter(u=>u.approved).map(u=>`<div class="person"><b>${safe(u.name)}</b> — ${safe(u.branch)} <small>${safe(u.username)} ${u.role==='admin'?'· مدير':''}</small><div class="actions"><button class="secondary" onclick="adminEditUser('${u.id}')">تعديل الاسم/الفرع</button><button class="secondary" onclick="adminAddChild('${u.id}')">إضافة ابن لهذا الحساب</button>${u.role!=='admin'?`<button class="danger" onclick="removeMember('${u.id}')">حذف الحساب</button>`:''}</div></div>`).join('');
+members.innerHTML+='<h3 style="margin-top:20px">كل الأسماء المسجلة في الشجرة</h3>'+(db.children.map(c=>`<div class="person">🌱 ${safe(c.name)} <small>الفرع: ${safe(c.branch)}</small><div class="actions"><button class="secondary" onclick="adminEditChild('${c.id}')">تعديل الاسم</button><button class="danger" onclick="adminDeleteChild('${c.id}')">حذف الاسم</button></div></div>`).join('')||'<p class="muted">لا توجد أسماء أحفاد مسجلة بعد.</p>');
+}
+function adminEditUser(id){if(!current||current.role!=='admin')return;let u=db.users.find(x=>x.id===id);if(!u)return;let n=prompt('تعديل الاسم الكامل',u.name);if(n===null)return;let b=prompt('اكتب اسم الفرع من القائمة: '+branches.join('، '),u.branch);if(b===null)return;if(!branches.includes(b.trim()))return alert('اسم الفرع غير صحيح');u.name=n.trim()||u.name;u.branch=b.trim();save();renderAdmin();renderTree()}
+function adminAddChild(id){if(!current||current.role!=='admin')return;let u=db.users.find(x=>x.id===id);if(!u)return;let n=prompt('اسم الابن/الابنة الذي تريد إضافته تحت '+u.name);if(!n||!n.trim())return;db.children.push({id:'c'+Date.now(),name:n.trim(),parentId:u.id,branch:u.branch,note:'أضيف بواسطة مدير الموقع'});save();renderAdmin();renderTree()}
+function adminEditChild(id){if(!current||current.role!=='admin')return;let c=db.children.find(x=>x.id===id);if(!c)return;let n=prompt('تعديل الاسم',c.name);if(n===null)return;c.name=n.trim()||c.name;save();renderAdmin();renderTree()}
+function adminDeleteChild(id){if(!current||current.role!=='admin')return;if(!confirm('تأكيد حذف هذا الاسم من الشجرة؟'))return;db.children=db.children.filter(x=>x.id!==id);save();renderAdmin();renderTree()}
+function approve(id){let u=db.users.find(x=>x.id===id);if(u){u.approved=true;save();renderAdmin();renderTree();fillParents()}}
+function reject(id){db.users=db.users.filter(x=>x.id!==id);save();renderAdmin();fillParents()}
+function removeMember(id){if(!confirm('حذف الحساب وأبنائه المسجلين؟'))return;db.users=db.users.filter(x=>x.id!==id);db.children=db.children.filter(x=>x.parentId!==id);save();renderAdmin();renderTree();fillParents()}
+
+function saveGathering(){if(!current||current.role!=='admin')return;db.gathering.title=gatherTitle.value.trim();db.gathering.description=gatherDesc.value.trim();db.gathering.votes={};save();renderGathering();alert('تم تحديث نقطة التجمع، وتم تصفير التصويت للتصويت على المقترح الجديد.')}
+function voteGathering(choice){if(!current||!current.approved)return; if(!db.gathering.title){alert('لم يحدد المدير نقطة التجمع بعد');return}db.gathering.votes[current.id]=choice;save();renderGathering()}
+function renderGathering(){if(!current)return;let g=db.gathering;gatheringDetails.innerHTML=g.title?`<b>📍 ${safe(g.title)}</b><div style="margin-top:8px;white-space:pre-wrap">${safe(g.description||'لا توجد تفاصيل إضافية')}</div>`:'لم يحدد المدير نقطة تجمع حتى الآن.';let votes=Object.values(g.votes),yes=votes.filter(v=>v==='yes').length,no=votes.filter(v=>v==='no').length;myVote.textContent=g.votes[current.id]==='yes'?'تصويتك الحالي: موافق':g.votes[current.id]==='no'?'تصويتك الحالي: غير موافق':'لم تصوّت بعد.';voteResults.innerHTML=`<div class="grid"><div class="person">👍 موافق: <b>${yes}</b></div><div class="person">👎 غير موافق: <b>${no}</b></div></div><p class="muted">عدد المصوتين: ${yes+no}</p>`}
+function sendMessage(){let t=chatInput.value.trim();if(!t||!current)return;db.messages.push({id:'m'+Date.now(),user:current.name,text:t,time:new Date().toLocaleString('ar-SA')});chatInput.value='';save();renderChat()}
+function renderChat(){messages.innerHTML=db.messages.map(m=>`<div class="msg ${current&&m.user===current.name?'mine':''}"><b>${safe(m.user)}</b><div>${safe(m.text)}</div><small>${safe(m.time)}</small></div>`).join('')||'<p class="muted">لا توجد رسائل بعد. ابدأوا الحديث 🌿</p>';messages.scrollTop=messages.scrollHeight}
+init();
+</script></body></html>
